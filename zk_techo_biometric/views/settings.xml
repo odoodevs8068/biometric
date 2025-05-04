@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="res_config_settings_view_form_zk" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.zk</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="35"/>
+        <field name="inherit_id" ref="hr_attendance.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='pincode_setting_container']" position="after">
+                <h2>ZK Biometric API Credentials</h2>
+                <div class="row mt16 o_settings_container" name="purchase_setting_container">
+                    <div class="col-12 col-lg-6 o_setting_box" id="zk_cred">
+                        <div class="o_setting_left_pane"/>
+                        <div class="o_setting_right_pane">
+                            <div class="mt8">
+                                <label for="server_ip"/>
+                            </div>
+                            <field name="server_ip"/>
+                            <br/>
+
+                            <div class="mt8">
+                                <label for="server_port"/>
+                            </div>
+                            <field name="server_port"/>
+                            <br/>
+
+                            <div class="mt8">
+                                <label for="user_name"/>
+                            </div>
+                            <field name="user_name"/>
+                            <br/>
+
+                            <div class="mt8">
+                                <label for="password"/>
+                            </div>
+                            <field name="password"/>
+                                <div class="mt8">
+                                <button name="button_get_auth_token" icon="fa-arrow-right" type="object"
+                                        string="GET AUTH TOKEN" class="btn-link"/>
+                            </div>
+                            <field name="auth_token" password="1"/>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

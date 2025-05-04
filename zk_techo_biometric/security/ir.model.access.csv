@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_zk_device,access.zk_device,model_zk_device,,1,1,1,1
+access_zk_print_wizard,access.zk_print_wizard,model_zk_print_wizard,,1,1,1,1
+access_zk_device_area,access.zk_device_area,model_zk_device_area,,1,1,1,1

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="view_employee_form_zk_inherit" model="ir.ui.view">
+        <field name="name">view_employee_form_zk_inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet/div[@name='button_box']" position="inside">
+                <button name="button_open_print_wizard" class="oe_stat_button" icon="fa-download" type="object" >
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_text">
+                            Biometric <br/>Attendance
+                        </span>
+                    </div>
+                </button>
+            </xpath>
+            <xpath expr="//page[@name='hr_settings']" position="after">
+                <page name="biometric_device_emp_details" string="Bio Metric Details">
+                    <group>
+                        <group>
+                             <field name='bio_metric_user_id'/>
+                             <field name='bio_metric_emp_id'/>
+                        </group>
+                        <group>
+                             <field name='bio_metric_area_id'/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//form/header" position="inside">
+                <button name="button_create_employee" type="object" class="btn btn-primary"
+                        string="Create Employee Biometric"
+                        icon="fa-plus"
+                        attrs="{'invisible' : [('bio_metric_emp_id' , '!=', 0)]}"/>
+                <button name="button_update_emp" type="object" class="btn btn-secondary"
+                        string="Update Employee Biometric"
+                        icon="fa-edit"
+                        attrs="{'invisible' : [('bio_metric_emp_id' , '=', 0)]}"/>
+                <button name="delete_emp_device" type="object" class="btn btn-secondary"
+                        string="Delete Employee Biometric"
+                        icon="fa-trash"
+                        attrs="{'invisible' : [('bio_metric_emp_id' , '=', 0)]}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_department_form_zk_inherit" model="ir.ui.view">
+        <field name="name">view_department_form_zk_inherit</field>
+        <field name="model">hr.department</field>
+        <field name="inherit_id" ref="hr.view_department_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='company_id']" position="after">
+                <field name="zk_dep_id"/>
+                <field name="zk_dept_code"/>
+            </xpath>
+            <xpath expr="//form/sheet" position="before">
+                <header>
+                    <button name="create_departments" type="object" class="btn btn-primary" string="Create Department Biometric"
+                        icon="fa-plus"
+                        attrs="{'invisible' : [('zk_dep_id' , '!=', 0)]}"/>
+                    <button name="update_department" type="object" class="btn btn-secondary" string="Update Department Biometric"
+                        icon="fa-edit"
+                        attrs="{'invisible' : [('zk_dep_id' , '=', 0)]}"/>
+                    <button name="delete_department" type="object" class="btn btn-secondary"
+                        string="Delete Department Biometric"
+                        icon="fa-trash"
+                        attrs="{'invisible' : [('zk_dep_id' , '=', 0)]}"/>
+                </header>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_hr_job_form_zk_inherit" model="ir.ui.view">
+        <field name="name">view_hr_job_form_zk_inherit</field>
+        <field name="model">hr.job</field>
+        <field name="inherit_id" ref="hr.view_hr_job_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[2]/group/group[1]/field[@name='department_id']" position="after">
+                <field name="zk_job_id"/>
+                <field name="zk_job_code"/>
+            </xpath>
+            <xpath expr="//form/header" position="inside">
+                    <button name="create_position" type="object" class="btn btn-primary" string="Create"
+                        icon="fa-plus"
+                        attrs="{'invisible' : [('zk_job_id' , '!=', 0)]}"/>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>
