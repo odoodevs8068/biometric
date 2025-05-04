@@ -4,7 +4,7 @@
     'sequence': 100,
     'author': "JD DEVS",
     'category': '',
-    'depends': ['base', 'hr_attendance', 'hr', 'mail', 'web', 'print_wizard'],
+    'depends': ['base', 'hr_attendance', 'hr', 'mail', 'web'],
     'data': [
         "security/ir.model.access.csv",
         "views/zk_device.xml",
