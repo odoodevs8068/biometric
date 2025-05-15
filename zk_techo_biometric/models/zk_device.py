@@ -13,13 +13,11 @@ import pytz
 from zk.exception import ZKErrorResponse
 from odoo import api, fields, models, registry, _
 from datetime import datetime
-from odoo.addons.print_wizard.models.worksheet import WorkSheet
 import io
 import xlsxwriter
 from collections import defaultdict
 from datetime import datetime, timedelta
 
-WS = WorkSheet()
 
 AUTH_API = "/api-token-auth/"
 DEVICE_OBJ = "/iclock/api/terminals/?sn=%s"
@@ -215,7 +213,10 @@ class ZKDevice(models.Model):
             raise ValidationError(f"Failed To Connect The API: {e}")
 
     def prepare_attendance_reports(self, attendance_data, date_from, date_to):
-        output, workbook, worksheet = WS.workbook_worksheet()
+        output = io.BytesIO()
+        workbook = xlsxwriter.Workbook(output, {'in_memory': True})
+        worksheet = workbook.add_worksheet()
+        worksheet.set_column('A:AZ', 20)
         header_format = workbook.add_format({
             'bold': True,
             'bg_color': '#D9D9D9',
